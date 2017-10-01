@@ -19,9 +19,15 @@ def input_data():
     email = request.form['email']
 
     if username == "":
-        error = "You must submit a username"
+        error = "Please submit a username"
         return redirect("/?error=" + error)
-    
+    elif " " in username: 
+        error = "Usernames cannot contain invalid characters"
+        return redirect("/?error=" + error)
+    elif len(username) < 3 or len(username) > 20:
+        error = "Usernames must be longer than 3 and shorter than 20 characters"
+        return redirect("/?error=" + error)
+
     else:
         return render_template('welcome.html', username=username)
 
