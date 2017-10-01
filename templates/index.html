@@ -3,12 +3,12 @@
 {% block content %}
     <h1>Signup</h1>
 
-    <form action="welcome" method="post">
+    <form action="input" method="post">
         <label for="username">Username  </label>
         <input type="text" name="username"/> 
         <br>
         {% if error %}
-        <p class='error'>{{ username_error }}</p>
+        <p class='error'>{{ error }}</p>
         {% endif %}
         
         <label for="password">Password  </label>

@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True 
 
-@app.route("/welcome", methods=["GET", "POST"])
+"""@app.route("/welcome", methods=["GET", "POST"])
 def welcome():
     username = request.form['username']
 
-    return render_template('welcome.html', username=username)
+    return render_template('welcome.html', username=username)"""
 
-''' @app.route("/", methods=["GET", 'POST'])
+@app.route("/input", methods=["GET", 'POST'])
 def input_data():
     username = request.form['username']
     password = request.form['password']
@@ -21,9 +21,9 @@ def input_data():
     if username == "":
         error = "You must submit a username"
         return redirect("/?error=" + error)
-
+    
     else:
-        return redirect("/welcome") '''
+        return render_template('welcome.html', username=username)
 
 @app.route("/", methods=["GET", 'POST'])
 def index():
