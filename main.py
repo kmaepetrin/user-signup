@@ -41,14 +41,17 @@ def input_data():
             verify_error = ""
 
         if email != "":
-            if ("@" not in email) or ("." not in email) or (" " in email) or len(password) < 3 or len(password) > 20:
+            if (" " in email) or len(password) < 3 or len(password) > 20:
+                email_error = "Your email is invalid"
+                success = 0
+            if email.count("@") > 1 or email.count("@") < 1 or email.count(".") > 1 or email.count(".") < 1:
                 email_error = "Your email is invalid"
                 success = 0
         else:
             email_error = ""
 
         if success == 0:
-            return render_template('index.html', username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error)
+            return render_template('index.html', username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error, username=username, email=email)
         else:
             return render_template('welcome.html', username=username)
 
